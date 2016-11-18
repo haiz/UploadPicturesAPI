@@ -1,0 +1,22 @@
+{
+  "name": "uploadpic-api",
+  "version": "1.0.0",
+  "description": "UploadPicturesAPI",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Linh Tran",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-jwt": "^3.4.0",
+    "express-unless": "^0.3.0",
+    "jade": "^1.11.0",
+    "jsonwebtoken": "^6.2.0",
+    "mysql": "^2.10.2",
+    "sequelize": "^3.23.0"
+  }
+}

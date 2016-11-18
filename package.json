@@ -14,7 +14,6 @@
     "express": "^4.13.4",
     "express-jwt": "^3.4.0",
     "express-unless": "^0.3.0",
-    "jade": "^1.11.0",
     "jsonwebtoken": "^6.2.0",
     "mysql": "^2.10.2",
     "sequelize": "^3.23.0"

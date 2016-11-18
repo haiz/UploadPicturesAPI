@@ -6,14 +6,14 @@ module.exports = function(app, utils, models) {
     var upload = multer({ dest: 'uploads/' });
 
 
-    app.get('/api/users/getAllPictures', utils.checkToken);
-    //app.get('/api/users/getAllPictures', ctrls['user'].);
+    app.get('/api/pictures', utils.checkToken);
+    app.get('/api/pictures', ctrls['pictures'].userGetPictures);    
 
-    app.post('/api/pictures/upload', upload.single('picture') utils.checkToken);
-    app.post('/api/pictures/upload', ctrls['pictures']);
+    app.post('/api/pictures', upload.single('picture'), utils.checkToken);
+    app.post('/api/pictures', ctrls['pictures'].upload);
 
-    app.post('/api/users/upload', utils.checkToken);
-    app.post('/api/users/upload', ctrls['users'].upload);
+    // app.post('/api/users/upload', utils.checkToken);
+    // app.post('/api/users/upload', ctrls['users'].upload);
     app.post('/api/users/login', ctrls['users'].login); // login
 
     // catch-all

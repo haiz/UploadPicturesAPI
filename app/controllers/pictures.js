@@ -29,7 +29,18 @@ module.exports = function(model, utils) {
         });
     }
 
-    
+    picturesCtrl.userGetPictures = function(req, res, next){
+    	if(req.user == null) 
+            res.status(401).json({"message: you are not logged in"});
+
+        model.findAll({where: {userID: req.user.userID}})
+        	.then(function(images){
+        		if(images) res.json(images);
+        		else res.status(404).json({message: "no course was found"});	
+        	}, function(error){
+        		res.status(500).json({message:"unknown error. Details: " + error.message});
+        	})
+    }
 
     return picturesCtrl;
 }

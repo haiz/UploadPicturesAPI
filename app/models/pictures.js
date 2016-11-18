@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 module.exports = function(sequelize) {
 	var Pictures = sequelize.define('Pictures', {
 		id: {
-			type: Sequelize.BIGINT.UNSIGNED,
+			type: Sequelize.DataTypes.UUID,
 			primaryKey: true,
 			autoIncrement: true
 		},

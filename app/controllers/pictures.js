@@ -6,8 +6,9 @@ module.exports = function(model, utils) {
 
     picturesCtrl.upload = function(req, res, next){
         if(req.user == null) 
-            res.status(401).json({"message: you are not logged in"});
+            res.status(401).json({message: "you are not logged in"});
 
+        console.log("upload something");
         // req.form.complete(function(err, field, files){
         //     if(err) throw err;
         //     else{
@@ -25,13 +26,13 @@ module.exports = function(model, utils) {
         	function(image){
         	res.status(200).json({message: "image uploaded to " + req.file.path});	
         },	function(error){
-        	res.status(400).json({message: "errors occurred. Detail: " + err.message});	
+        	res.status(400).json({message: "errors occurred. Detail: " + error.message});	
         });
     }
 
     picturesCtrl.userGetPictures = function(req, res, next){
     	if(req.user == null) 
-            res.status(401).json({"message: you are not logged in"});
+            res.status(401).json({message: "you are not logged in"});
 
         model.findAll({where: {userID: req.user.userID}})
         	.then(function(images){

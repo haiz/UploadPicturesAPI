@@ -8,8 +8,9 @@ module.exports = function(config) {
     obj.tokenKey = 'SuperSecretKey';
     obj.tokenGen = jwt;
     obj.checkToken = function(req, res, next) {
+        console.log("ASDASD: " + obj.tokenKey);
         if (req.headers.token) {
-            jwt.verify(req.headers.token, this.tokenKey, function(err, user) {
+            jwt.verify(req.headers.token, obj.tokenKey, function(err, user) {
                 if (user) {
                     console.log('There is an user');
                     req.user = user;

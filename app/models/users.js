@@ -3,7 +3,7 @@ var Sequelize = require('sequelize');
 module.exports = function(sequelize) {
 	var Users = sequelize.define('Users', {
 		id: {
-			type: Sequelize.BIGINT.UNSIGNED,
+			type: Sequelize.DataTypes.UUID,
 			primaryKey: true,
 			autoIncrement: true
 		},

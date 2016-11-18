@@ -11,7 +11,7 @@ var models = {};
 var sequelize = new Sequelize(config.db, {});
 models = utils.loadModels(sequelize);
 
-app.use(express.multipart());
+//app.use(express.multipart());
 app.use(bodyParser.json());         
 app.use(bodyParser.urlencoded({     
     extended: true                  

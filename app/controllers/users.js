@@ -13,12 +13,14 @@ module.exports = function(model, utils) {
                     utils.compare(req.body.password, user.get().password, function(err, result) {
                         if (result)
                             res.status(200).json({
-                                "message": "login successful",
-                                "token": utils.tokenGen.sign(
-                                    { email: req.body.stud_email,
-                                      userId: user.get().id },
+                                message: "login successful",
+                                token: utils.tokenGen.sign(
+                                    { email: req.body.email, 
+                                      userId: user.get().id},
                                     utils.tokenKey,
-                                    {expiresIn: "12h"})
+                                    {expiresIn: "12h"}),
+                                userId: user.get().id,
+                                userName: user.get().nickName
                             });
                         else
                             res.status(401).json({message: "wrong password" });
@@ -74,7 +76,7 @@ module.exports = function(model, utils) {
 
     usersCtrl.upload = function(req, res, next){
         if(req.user == null) 
-            res.status(401).json({"message: you are not logged in"});
+            res.status(401).json({message: "you are not logged in"});
 
         req.form.complete(function(err, field, files){
             if(err) throw err;

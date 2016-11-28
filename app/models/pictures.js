@@ -8,7 +8,7 @@ module.exports = function(sequelize) {
 			autoIncrement: true
 		},
 		caption: {
-			type: Sequelize.STRING(500)
+			type: Sequelize.STRING(1000)
 		},
 		link: {
 			type: Sequelize.STRING(500)

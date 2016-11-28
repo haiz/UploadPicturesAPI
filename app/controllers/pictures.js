@@ -8,7 +8,7 @@ module.exports = function(model, utils) {
         if(req.user == null) 
             res.status(401).json({message: "you are not logged in"});
 
-        console.log("upload something");
+        console.log("user: " + JSON.stringify(req.user));
         // req.form.complete(function(err, field, files){
         //     if(err) throw err;
         //     else{
@@ -19,7 +19,7 @@ module.exports = function(model, utils) {
         // })
         var newImage = 
         	{link: req.file.path,
-        	userID: req.user.userID,
+        	userID: req.user.userId,
         	caption: req.body.caption};
 
         model.create(newImage).then(

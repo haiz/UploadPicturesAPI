@@ -52,15 +52,15 @@ module.exports = function(model, utils) {
     };
 
     usersCtrl.register = function(req, res, next) {
-        model.findOne({ where: { email: req.body.stud_email } })
+        console.log("req.body: " + JSON.stringify(req.body));
+        model.findOne({ where: { email: req.body.email } })
             .then(function(user) {
                 if (user) {
                     res.status(409).json({ status: "409 failed", message: "user already exists" });
-                    next();
                 }
 
-                utils.encrypt(req.body.stud_pass, function(encrypt) {
-                    req.body.stud_pass = encrypt;
+                utils.encrypt(req.body.password, function(encrypt) {
+                    req.body.password = encrypt;
                     console.log("encrypted password: " + encrypt);
                     model.create(req.body)
                         .then(function(user) {

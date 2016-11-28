@@ -7,7 +7,7 @@ var config = {
     name: 'uploadpic-api'
   },
   port: 8081,
-  db: 'mysql://root@localhost:3306/picture'
+  db: 'mysql://root:1@localhost:3306/picture'
 };
 
 module.exports = config;

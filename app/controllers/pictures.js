@@ -3,6 +3,7 @@
 module.exports = function(model, utils) {
 
     var picturesCtrl = {};
+    var storageUrl = "http://localhost:4000";
 
     picturesCtrl.upload = function(req, res, next){
         if(req.user == null) 
@@ -17,8 +18,12 @@ module.exports = function(model, utils) {
         //         model.create(req.)
         //     }
         // })
+
+        //process image link:
+        var imageLink = storageUrl + "/" + req.file.path.split('/')[1];
+
         var newImage = 
-        	{link: req.file.path,
+        	{link: imageLink,
         	userID: req.user.userId,
         	caption: req.body.caption};
 
@@ -33,11 +38,11 @@ module.exports = function(model, utils) {
     picturesCtrl.userGetPictures = function(req, res, next){
     	if(req.user == null) 
             res.status(401).json({message: "you are not logged in"});
-
-        model.findAll({where: {userID: req.user.userID}})
+        
+        model.findAll({where: {userID: req.user.userId}})
         	.then(function(images){
-        		if(images) res.json(images);
-        		else res.status(404).json({message: "no course was found"});	
+        		if(images) res.status(200).json(images);
+        		else res.status(404).json({message: "no pictures was found"});	
         	}, function(error){
         		res.status(500).json({message:"unknown error. Details: " + error.message});
         	})

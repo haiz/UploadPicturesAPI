@@ -11,7 +11,7 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(1000)
 		},
 		link: {
-			type: Sequelize.STRING(500)
+			type: Sequelize.STRING(1000)
 		},
 		userID: {
 			type: Sequelize.BIGINT.UNSIGNED,

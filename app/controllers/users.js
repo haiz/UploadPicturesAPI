@@ -57,6 +57,7 @@ module.exports = function(model, utils) {
             .then(function(user) {
                 if (user) {
                     res.status(409).json({ status: "409 failed", message: "user already exists" });
+                    return;
                 }
 
                 utils.encrypt(req.body.password, function(encrypt) {
@@ -77,13 +78,12 @@ module.exports = function(model, utils) {
     usersCtrl.upload = function(req, res, next){
         if(req.user == null) 
             res.status(401).json({message: "you are not logged in"});
+            return;
 
         req.form.complete(function(err, field, files){
             if(err) throw err;
             else{
                 res.status(200).json({message: "files uploaded to " + files.image.path});
-
-                //
             }
         })
     }

@@ -5,7 +5,7 @@ module.exports = function(sequelize) {
 		id: {
 			type: Sequelize.DataTypes.UUID,
 			primaryKey: true,
-			autoIncrement: true
+			defaultValue: Sequelize.UUIDV1
 		},
 		nickName: {
 			type: Sequelize.STRING(100),
@@ -21,7 +21,9 @@ module.exports = function(sequelize) {
 			type: Sequelize.STRING(20)
 		}
 	}, {
-		timestamps: false,
+			charset: 'utf8',
+  			collate: 'utf8_unicode_ci',
+			timestamps: false,
 			freezeTableName: true, // Model tableName will be the same as the model name
 			tableName: 'Users'
 		});

@@ -5,7 +5,7 @@ module.exports = function(sequelize) {
 		id: {
 			type: Sequelize.DataTypes.UUID,
 			primaryKey: true,
-			autoIncrement: true
+			defaultValue: Sequelize.UUIDV1
 		},
 		caption: {
 			type: Sequelize.STRING(1000)
@@ -17,7 +17,9 @@ module.exports = function(sequelize) {
 			type: Sequelize.BIGINT.UNSIGNED,
 		}
 	}, {
-		timestamps: false,
+			charset: 'utf-8',
+			collate: 'utf8_unicode_ci',
+			timestamps: false,
 			freezeTableName: true, // Model tableName will be the same as the model name
 			tableName: 'Pictures'
 		});
